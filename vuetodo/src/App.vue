@@ -26,7 +26,7 @@
           <button class="button is-light">
           &check;
           </button>
-          <button class="button is-danger">
+          <button @click="deleteTodo(i.id)" class="button is-danger">
             &cross;
 
           </button>
@@ -47,16 +47,16 @@ import { v4 as uuidv4 } from 'uuid'
 
 const todo = ref([
   {
-    id1:"id1",
+    id:"id1",
     content:"first todo",
     done:false
   }
   ,  {
-    id1:"id2",
+    id:"id2",
     content:"second todo",
     done:false
   },  {
-    id1:"id3",
+    id:"id3",
     content:"third todo",
     done:false
   }
@@ -71,8 +71,9 @@ const addTodo = () =>{
 
       todo.value.unshift(newTodo)
       newTodoContent.value=""
-
-
+  }
+  const deleteTodo = (id) =>{
+      todo.value = todo.value.filter((todo)=>todo.id !==id) 
   }
 </script>
 
